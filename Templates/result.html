@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Preprocessed Data</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body style="background: white">
+    
+    <h1>Preprocessed Data</h1>
+    {{ data | safe }}
+<style>
+    h1{
+    text-align: center;
+    font-family: monospace;
+}
+</style>
+<script>
+    window.addEventListener("load", function () {
+        var dynamicTable = document.querySelector("table.dataframe");
+        if (dynamicTable) {
+            dynamicTable.style.borderCollapse = "collapse";
+            dynamicTable.style.width = "100%";
+            dynamicTable.style.border = "2px solid #ffa500";
+            dynamicTable.style.fontFamily = "Arial, sans-serif";
+
+            var thElements = dynamicTable.getElementsByTagName("th");
+            for (var i = 0; i < thElements.length; i++) {
+                thElements[i].style.backgroundColor = "#3498db";
+                thElements[i].style.color = "white";
+                thElements[i].style.fontWeight = "bold";
+                thElements[i].style.border = "2px solid #ffa500";
+                thElements[i].style.padding = "10px";
+                thElements[i].style.textAlign = "center";
+            }
+
+            var trElements = dynamicTable.getElementsByTagName("tr");
+            for (var i = 0; i < trElements.length; i++) {
+                if (i % 2 === 0) {
+                    trElements[i].style.backgroundColor = "#f2f2f2";
+                }
+                trElements[i].addEventListener("mouseover", function () {
+                    this.style.backgroundColor = "#80aabd";
+                    this.style.transform = "scale(1.02)";
+                    this.style.transition = "transform 0.2s ease-in-out";
+                });
+                trElements[i].addEventListener("mouseout", function () {
+                    this.style.backgroundColor = "";
+                    this.style.transform = "";
+                    this.style.transition = "";
+                });
+
+                var tdElements = trElements[i].getElementsByTagName("td");
+                for (var j = 0; j < tdElements.length; j++) {
+                    tdElements[j].style.border = "2px solid #ffa500";
+                    tdElements[j].style.padding = "10px";
+                    tdElements[j].style.textAlign = "center";
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

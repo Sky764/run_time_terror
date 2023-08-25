@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excel Preprocessing</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            width:100%;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            padding: 20px;
+            background-color: #3498db;
+            color: white;
+            margin: 0;
+            text-align: center;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="file"], select, button {
+            display: block;
+            width: 100%;
+            margin-top: 5px;
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            font-size: 14px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        input[type="file"]:hover, select:hover, button:hover {
+            border-color: #3498db;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Excel Data Preprocessing</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="file">Upload Excel File:</label>
+            <input type="file" name="file" id="file">
+            <br>
+            <label for="cleaning_method">Select Cleaning Method:</label>
+            <select name="cleaning_method" id="cleaning_method">
+                <option value="remove_missing">Remove Missing Values</option>
+                <option value="replace_mean">Replace with Mean Value</option>
+                <option value="replace_median">Replace with Median Value</option>
+            </select>
+            <br>
+            <button type="submit">Preprocess</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var container = document.querySelector(".container");
+
+            // Array of possible background colors
+            var backgroundColors = ["#f8f8f8", "#e8e8e8", "#d8d8d8", "#c8c8c8"];
+
+            // Pick a random color from the array
+            var randomColor = backgroundColors[Math.floor(Math.random() * backgroundColors.length)];
+
+            // Apply the background color
+            container.style.backgroundColor = randomColor;
+        });
+    </script>
+</body>
+</html>
